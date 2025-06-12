@@ -39,13 +39,13 @@ HEADERS = {
 
 def load_unique_inn_list(filepath: str) -> List[str]:
     df = pd.read_csv(filepath)
-    inn_list = df['creditor_inn'].dropna().astype(str).unique().tolist()
+    inn_list = df['debtor_inn'].dropna().astype(str).unique().tolist()
     return inn_list
 
 
 def load_full_inn_list(filepath: str) -> List[str]:
     df = pd.read_csv(filepath)
-    return df['creditor_inn'].dropna().astype(str).tolist()
+    return df['debtor_inn'].dropna().astype(str).tolist()
 
 
 async def create_session() -> aiohttp.ClientSession:
@@ -185,6 +185,13 @@ def parse_company_page(html):
             data['Финансовая отчетность'] = financial_data
         except Exception:
             pass
+
+        # Добавляем год из выпадающего списка
+        reporting_year_tag = soup.find('span', id='accounting-huge-year')
+        if reporting_year_tag:
+            data['Дата последней отчетности'] = reporting_year_tag.get_text(strip=True)
+        else:
+            data['Дата последней отчетности'] = None
 
         # Генеральный директор
 
@@ -463,7 +470,7 @@ async def main():
 
     results = await process_inn_list(INN_LIST)
 
-    save_results_to_csv(results, "data_.csv")
+    save_results_to_csv(results, "debtor_data_.csv")
     logger.info(f"\nОбработка завершена. Получено {len(results)} карточек компаний из {len(INN_LIST)} ИНН.")
 
 

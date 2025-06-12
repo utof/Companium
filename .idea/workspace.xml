@@ -5,17 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a871439c-bf1e-4b17-9210-b12209e53dec" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/Companium.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/acync_parser.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data_processing.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/filter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/cleaned_filtered_merged_debt_creditors.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/final_creditors_table.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/final_debts_table.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/refined_merged_debt_creditors.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/filtered_debtor_company_data1.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/filtered_debtor_company_data_.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/merged_debt_creditors.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/acync_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/acync_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/inn_cache.json" beforeDir="false" afterPath="$PROJECT_DIR$/inn_cache.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,21 +39,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python.acync_parser.executor": "Run",
-    "Python.data_processing.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.parser.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python.acync_parser.executor&quot;: &quot;Run&quot;,
+    &quot;Python.data_processing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.parser.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Companium" />
+      <recent name="C:\Companium\data" />
     </key>
   </component>
   <component name="SharedIndexes">
