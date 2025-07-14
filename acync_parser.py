@@ -465,12 +465,12 @@ def save_results_to_csv(data: List[Dict[str, Any]], filename: str):
 
 
 async def main():
-    INN_LIST = load_unique_inn_list("result.csv")
+    INN_LIST = load_unique_inn_list("result1.csv")
     logger.info(f"Начата обработка {len(INN_LIST)} ИНН")
 
     results = await process_inn_list(INN_LIST)
 
-    save_results_to_csv(results, "debtor_data_.csv")
+    save_results_to_csv(results, "debtor_data_071425.csv")
     logger.info(f"\nОбработка завершена. Получено {len(results)} карточек компаний из {len(INN_LIST)} ИНН.")
 
 
