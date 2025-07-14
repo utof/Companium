@@ -1,7 +1,7 @@
 import pandas as pd
 
 # Загрузка данных из CSV-файла
-df = pd.read_csv('data_more_25.csv')
+df = pd.read_csv('data/cleaned_filtered_merged_debt_creditors.csv', encoding='utf-8')
 
 # Функция для добавления нуля к ИНН длиной 9 символов
 def add_zero_to_inn(inn):
@@ -9,8 +9,13 @@ def add_zero_to_inn(inn):
         return '0' + str(int(inn))
     return inn
 
-# Применение функции к столбцу 'ИНН'
-df['ИНН'] = df['ИНН'].apply(add_zero_to_inn)
+# print("Количество ИНН, к которым будет добавлен ноль:", df['debtor_inn'].apply(lambda x: len(str(int(x))) == 9).sum())
+
+
+
+# Применение функции к столбцу 'debtor_inn'
+df['debtor_inn'] = df['debtor_inn'].apply(add_zero_to_inn)
+
 
 # Сохранение изменений обратно в CSV-файл
-df.to_csv('data_more_25_updated.csv', index=False, encoding='utf-8')
+df.to_csv('data/cleaned___debt_creditors_add0.csv', index=False, encoding='utf-8')

@@ -38,13 +38,14 @@ HEADERS = {
 
 
 def load_unique_inn_list(filepath: str) -> List[str]:
-    df = pd.read_csv(filepath)
+    df = pd.read_csv(filepath, dtype={'debtor_inn': str}) # Убедимся, что ИНН читается как строка
+    # df = pd.read_csv(filepath)
     inn_list = df['debtor_inn'].dropna().astype(str).unique().tolist()
     return inn_list
 
 
 def load_full_inn_list(filepath: str) -> List[str]:
-    df = pd.read_csv(filepath)
+    df = pd.read_csv(filepath, dtype={'debtor_inn': str})  # Убедимся, что ИНН читается как строка
     return df['debtor_inn'].dropna().astype(str).tolist()
 
 
@@ -465,12 +466,13 @@ def save_results_to_csv(data: List[Dict[str, Any]], filename: str):
 
 
 async def main():
-    INN_LIST = load_unique_inn_list("result1.csv")
+
+    INN_LIST = load_unique_inn_list("data\cleaned___debt_creditors_add0.csv")
     logger.info(f"Начата обработка {len(INN_LIST)} ИНН")
 
     results = await process_inn_list(INN_LIST)
 
-    save_results_to_csv(results, "debtor_data_071425.csv")
+    save_results_to_csv(results, "data/res250714_200_parsed.csv")
     logger.info(f"\nОбработка завершена. Получено {len(results)} карточек компаний из {len(INN_LIST)} ИНН.")
 
 
