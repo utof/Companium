@@ -138,12 +138,22 @@ def clean_empty_debtors(df: pd.DataFrame, require_all: bool = False) -> pd.DataF
         return df[df[debtor_cols].notna().any(axis=1)]
     return df[df[debtor_cols].notna().all(axis=1)]
 
+
+def sort_by_empty_columns(df: pd.DataFrame) -> pd.DataFrame:
+    """
+    Sorts the DataFrame so that rows with more empty (NaN or empty string) columns are at the bottom.
+    """
+    # Count NaN or empty string per row
+    empty_count = df.isna().sum(axis=1) + (df == '').sum(axis=1)
+    return df.assign(_empty_count=empty_count).sort_values('_empty_count').drop(columns=['_empty_count']).reset_index(drop=True)
+
 def save_result(df: pd.DataFrame, output_path: str):
     """Save final dataframe"""
     df.to_csv(output_path, index=False)
 
 def main():
     # Configuration
+    # COMPANIUM_PATH = "data/res250714_300_dropped_cols.csv"
     COMPANIUM_PATH = "data/res250714_300_dropped_cols.csv"
     MAIN_DATA_PATH = "data/cleaned___debt_creditors_add0.csv"
     OUTPUT_PATH = "data/res250714_400_filtered.csv"
@@ -162,7 +172,8 @@ def main():
         # Merge and process main data
         result = merge_and_enrich(main_df, filtered)
         result = propagate_debtor_info(result)
-        result = clean_empty_debtors(result, require_all=False)
+        result = clean_empty_debtors(result, require_all=True)
+        result = sort_by_empty_columns(result)
         
         # Save result
         save_result(result, OUTPUT_PATH)
